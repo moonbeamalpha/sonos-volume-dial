@@ -85,6 +85,15 @@
                 <option value="10">10%</option>
             </select>
         </div>
+
+        <!-- Single Speaker Mode -->
+        <div class="sdpi-item">
+            <div class="sdpi-item-label">Single Speaker</div>
+            <input class="sdpi-item-value" type="checkbox" id="singleSpeakerMode" setting="singleSpeakerMode">
+        </div>
+        <div class="sdpi-item">
+            <div class="spdi-item-value info-tooltip">Enable to control only this speaker. Disable to control all speakers in the group (stereo pairs, grouped rooms).</div>
+        </div>
     </div>
 
     <!-- Stream Deck Property Inspector Library -->
@@ -162,6 +171,12 @@
             if (settings.volumeStep !== undefined) {
                 stepSelect.value = settings.volumeStep.toString();
             }
+
+            // Update single speaker mode checkbox
+            const singleSpeakerCheckbox = document.getElementById("singleSpeakerMode");
+            if (settings.singleSpeakerMode !== undefined) {
+                singleSpeakerCheckbox.checked = settings.singleSpeakerMode;
+            }
         }
 
         // Save settings when inputs change
@@ -170,6 +185,7 @@
 
             const speakerIp = document.getElementById("speakerIp").value;
             const volumeStep = parseInt(document.getElementById("volumeStep").value);
+            const singleSpeakerMode = document.getElementById("singleSpeakerMode").checked;
 
             // Don't save if IP is invalid, but still show validation message
             if (speakerIp && !validateIPAddress(speakerIp)) {
@@ -183,7 +199,8 @@
             const settings = {
                 ...currentSettings,
                 speakerIp,
-                volumeStep
+                volumeStep,
+                singleSpeakerMode
             };
 
             // Update our local copy
@@ -214,6 +231,7 @@
             saveSettings();
         });
         document.getElementById("volumeStep").addEventListener("change", saveSettings);
+        document.getElementById("singleSpeakerMode").addEventListener("change", saveSettings);
     </script>
 </body>
 </html> 

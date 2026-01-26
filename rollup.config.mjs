@@ -7,7 +7,7 @@ import path from "node:path";
 import url from "node:url";
 
 const isWatching = !!process.env.ROLLUP_WATCH;
-const sdPlugin = "com.0xjessel.sonos-volume-dial.sdPlugin";
+const sdPlugin = "com.moonbeamalpha.sonos-volume-dial.sdPlugin";
 
 /**
  * @type {import('rollup').RollupOptions}

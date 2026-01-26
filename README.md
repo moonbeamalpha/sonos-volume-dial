@@ -2,7 +2,7 @@
 
 A Stream Deck+ plugin that lets you control your Sonos speaker's volume using the Stream Deck+ dial. Seamlessly adjust volume, mute/unmute, and get real-time feedback directly on your Stream Deck+.
 
-![Stream Deck+ Sonos Volume Control](com.0xjessel.sonos-volume-dial.sdPlugin/imgs/plugin/icon.png)
+![Stream Deck+ Sonos Volume Control](com.moonbeamalpha.sonos-volume-dial.sdPlugin/imgs/plugin/icon.png)
 
 ## Demo
 
@@ -25,7 +25,7 @@ A Stream Deck+ plugin that lets you control your Sonos speaker's volume using th
 
 ## Installation
 
-1. Download the latest release from the [releases page](https://github.com/0xjessel/sonos-volume-dial/releases)
+1. Download the latest release from the [releases page](https://github.com/moonbeamalpha/sonos-volume-dial/releases)
 2. Double-click the `.streamDeckPlugin` file to install
 3. Find your Sonos speaker's IP address:
    - Open the Sonos app
@@ -53,7 +53,7 @@ Requirements:
 
 ```bash
 # Clone the repository
-git clone https://github.com/0xjessel/sonos-volume-dial.git
+git clone https://github.com/moonbeamalpha/sonos-volume-dial.git
 cd sonos-volume-dial
 
 # Install dependencies
@@ -69,10 +69,10 @@ npm run watch
 streamdeck dev
 
 # Link the plugin to Stream Deck
-streamdeck link com.0xjessel.sonos-volume-dial.sdPlugin
+streamdeck link com.moonbeamalpha.sonos-volume-dial.sdPlugin
 
 # Make changes and reload plugin
-streamdeck restart com.0xjessel.sonos-volume-dial.sdPlugin
+streamdeck restart com.moonbeamalpha.sonos-volume-dial.sdPlugin
 ```
 
 ## License
