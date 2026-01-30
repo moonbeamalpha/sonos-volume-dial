@@ -255,7 +255,7 @@ export class SonosVolumeDial extends SingletonAction {
 					});
 
 					// Send settings back to Property Inspector with current volume
-					state.currentSettings = { speakerIp, volumeStep, value: volume };
+					state.currentSettings = { speakerIp, volumeStep, value: volume, singleSpeakerMode };
 					dialAction.setSettings(state.currentSettings);
 
 					// Start polling for updates only after we've successfully connected and initialized
@@ -268,14 +268,14 @@ export class SonosVolumeDial extends SingletonAction {
 					state.sonos = null;
 					this.showAlert(dialAction, 'Failed to connect to speaker');
 					// Even if connection fails, ensure settings are synced
-					state.currentSettings = { speakerIp, volumeStep, value };
+					state.currentSettings = { speakerIp, volumeStep, value, singleSpeakerMode };
 					dialAction.setSettings(state.currentSettings);
 				}
 			} else {
 				logger.warn('No speaker IP configured');
 				state.lastKnownVolume = value;
 				// Ensure settings are synced even when no IP is configured
-				state.currentSettings = { volumeStep, value };
+				state.currentSettings = { volumeStep, value, singleSpeakerMode };
 				dialAction.setSettings(state.currentSettings);
 			}
 		} catch (error) {

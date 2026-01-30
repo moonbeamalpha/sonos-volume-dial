@@ -162,9 +162,16 @@ export class SonosController {
     }
 
     /**
-     * Get volume from the group coordinator
+     * Get volume. In single speaker mode, gets this speaker's volume.
+     * In group mode, gets volume from the group coordinator.
      */
     async getVolume(): Promise<number> {
+        // In single speaker mode, get volume from this speaker only
+        if (this.singleSpeakerMode) {
+            const result = await this.executeAction('RenderingControl', 'GetVolume', { Channel: 'Master' });
+            return parseInt(result.CurrentVolume as string, 10);
+        }
+
         const coordinator = await this.getGroupCoordinator();
         const result = await this.executeActionOnHost(coordinator, 'RenderingControl', 'GetVolume', { Channel: 'Master' });
         return parseInt(result.CurrentVolume as string, 10);
@@ -202,7 +209,8 @@ export class SonosController {
     }
 
     /**
-     * Get mute state
+     * Get mute state. In single speaker mode, gets this speaker's mute state.
+     * In group mode, gets mute state from this speaker (which should reflect group state).
      */
     async getMuted(): Promise<boolean> {
         const result = await this.executeAction('RenderingControl', 'GetMute', { Channel: 'Master' });
